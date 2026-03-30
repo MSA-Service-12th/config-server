@@ -1,0 +1,29 @@
+server:
+  port: 18888
+
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/MSA-Service-12th/config
+          search-paths:
+          - common
+          - '{application}'
+          default-label: dev
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:18761/eureka}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info,metrics
