@@ -13,6 +13,7 @@ spring:
           search-paths:
           - common
           - '{application}'
+          - '{application}/{profile}'
           default-label: dev
 
 eureka:
